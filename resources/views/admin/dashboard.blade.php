@@ -1,3 +1,7 @@
+@php
+    $isStatsPage = request()->routeIs('admin.stats');
+@endphp
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -10,7 +14,7 @@
             background: #fff;
             font-family: 'Figtree', sans-serif;
             color: black;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .sidebar {
@@ -113,6 +117,7 @@
     </style>
 </head>
 <body>
+
     <div id="logoutPopup" class="popup-container">
         <div class="popup-content">
             <h4>Bạn có chắc muốn đăng xuất?</h4>
@@ -130,8 +135,8 @@
         <a href="{{ route('admin.users') }}">👤 Quản lý Người Dùng</a>
         <a href="{{ route('admin.posts') }}">📝 Kiểm Duyệt Bài Viết</a>
         <a href="{{ route('admin.stats') }}">📊 Thống Kê</a>
-        <a href="#" onclick="openPopup()">🚪 Đăng Xuất</a>
 
+        <!-- Đã xóa nút đăng xuất khỏi sidebar -->
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
@@ -140,7 +145,20 @@
     <!-- Main Content -->
     <div class="content fade-in">
         <div class="container">
-            <h2 id="welcomeMessage" class="mb-4"></h2>
+            <!-- Dòng chứa lời chào và nút đăng xuất -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 id="welcomeMessage" class="mb-0"></h2>
+                <!-- Nút Đăng Xuất -->
+                @if($isStatsPage)
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger">🚪 Đăng Xuất</button>
+                    </form>                   
+                @else
+                    <button onclick="openPopup()" class="btn btn-outline-danger">🚪 Đăng Xuất</button>
+                @endif
+            </div>
+
             <div id="dashboard-content">@yield('dashboard-content')</div>
         </div>
     </div>
