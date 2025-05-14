@@ -1,0 +1,3 @@
+Project sử dung MySQL
+tạo 1 database mới "blog_project"
+import file "blog_project.sql" để sử dụng
