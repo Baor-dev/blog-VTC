@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\PostsExport;
+
 
 class PostController extends Controller
 {
@@ -117,4 +119,11 @@ class PostController extends Controller
     {
         return view('posts.show', compact('post'));
     }
+    
+    public function export()
+    {
+        $export = new PostsExport();
+        return $export->export();
+    }
+
 }

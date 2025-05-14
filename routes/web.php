@@ -90,4 +90,6 @@ Route::post('/posts/delete-banner', [PostController::class, 'deleteBanner'])->na
 
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
+Route::get('/export-posts', [PostController::class, 'export'])->name('posts.export');
+
 require __DIR__.'/auth.php';
