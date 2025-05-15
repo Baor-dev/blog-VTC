@@ -1,0 +1,23 @@
+services:
+  - name: laravel-blog
+    type: web
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        sync: false
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        value: your-database-host
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        value: your-db-name
+      - key: DB_USERNAME
+        value: your-db-user
+      - key: DB_PASSWORD
+        value: your-db-password
+    plan: free
