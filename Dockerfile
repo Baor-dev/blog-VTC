@@ -27,5 +27,9 @@ RUN chmod -R 775 storage bootstrap/cache
 # Run migrations
 RUN php artisan migrate --force
 
+RUN apt-get update && apt-get install -y \
+    unzip git curl libpq-dev libzip-dev libgd-dev libonig-dev \
+    && docker-php-ext-install gd zip mbstring pdo pdo_mysql
+    
 # Start Laravel using PHP-FPM
 CMD ["php-fpm"]
