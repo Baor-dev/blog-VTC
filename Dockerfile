@@ -23,6 +23,7 @@ RUN php artisan key:generate
 
 # Set permissions
 RUN chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
 # Run migrations
 RUN php artisan migrate --force
