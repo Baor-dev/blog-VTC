@@ -64,7 +64,7 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
 
 Route::get('/admin', function () {
-    return redirect()->route('admin.users');
+    return redirect()->route('admin.stats');
 });
 
 Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');

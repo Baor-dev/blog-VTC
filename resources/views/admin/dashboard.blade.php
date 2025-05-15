@@ -129,13 +129,14 @@
     <!-- Sidebar Menu -->
     <div class="sidebar">
         <h4>Admin Panel</h4>
+
+        <a href="{{ route('admin.stats') }}">📊 Thống Kê</a>
+        <a href="{{ route('admin.users') }}">👤 Quản lý Người Dùng</a>
+        <a href="{{ route('admin.posts') }}">📝 Kiểm Duyệt Bài Viết</a>
         <a href="{{ route('dashboard') }}">
             🔙 Quay về Trang chủ
         </a>
-        <a href="{{ route('admin.users') }}">👤 Quản lý Người Dùng</a>
-        <a href="{{ route('admin.posts') }}">📝 Kiểm Duyệt Bài Viết</a>
-        <a href="{{ route('admin.stats') }}">📊 Thống Kê</a>
-
+        
         <!-- Đã xóa nút đăng xuất khỏi sidebar -->
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
